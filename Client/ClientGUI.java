@@ -407,6 +407,5 @@ public class ClientGUI extends JFrame implements ServerConnection.ConnectionList
         SwingUtilities.invokeLater(() -> new ClientGUI());
     }
 }
-public class ClientGUI {
-    
-}
+
+
