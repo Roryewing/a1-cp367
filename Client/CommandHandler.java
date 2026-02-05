@@ -11,7 +11,7 @@ public class CommandHandler {
 	}
 
 	public void post(int x, int y, String color, String message) {
-		// Basic POST formatting - server may expect different format
+		
 		connection.sendCommand(String.format("POST %d %d %s %s", x, y, color, message));
 	}
 
