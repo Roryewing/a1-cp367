@@ -10,8 +10,18 @@ public class Note {
         this.x = x; this.y = y; this.width = w; this.height = h;
         this.color = color; this.message = message;
     }
+    // provide standard accessors
+    private boolean pinned = false;
 
-    public boolean isPinned() { return !pins.isEmpty(); }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
+    public String getColor() { return color; }
+    public String getMessage() { return message; }
+
+    public boolean isPinned() { return pinned || !pins.isEmpty(); }
+    public void setPinned(boolean p) { this.pinned = p; }
     
     public boolean contains(int px, int py) {
         return px >= x && px < x + width && py >= y && py < y + height;
