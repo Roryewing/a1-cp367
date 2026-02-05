@@ -1,9 +1,8 @@
-package Client;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class ClientGUI extends JFrame implements ServerConnection.ConnectionListener {
+public class ClientGUI extends JFrame implements ClientConnection.ConnectionListener {
     private JTextField serverIpField;
     private JTextField portField;
     private JButton connectButton;
@@ -31,16 +30,16 @@ public class ClientGUI extends JFrame implements ServerConnection.ConnectionList
     private JButton shakeButton;
     private JButton clearButton;
 
-    private ServerConnection connection;
+    private ClientConnection connection;
     private CommandHandler commandHandler;
 
     public ClientGUI() {
-        setTitle("Bulletin Board Client");
+        setTitle("Note Bulletin Board");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 700);
+        setSize(1220, 900);
         setLocationRelativeTo(null);
 
-        connection = new ServerConnection(this);
+        connection = new ClientConnection(this);
         commandHandler = new CommandHandler(connection);
 
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -48,8 +47,8 @@ public class ClientGUI extends JFrame implements ServerConnection.ConnectionList
         tabbedPane.addTab("Connection", createConnectionPanel());
         tabbedPane.addTab("POST", createPostPanel());
         tabbedPane.addTab("GET", createGetPanel());
-        tabbedPane.addTab("PIN/UNPIN", createPinPanel());
-        tabbedPane.addTab("SHAKE/CLEAR", createShakePanel());
+        tabbedPane.addTab("PIN / UNPIN", createPinPanel());
+        tabbedPane.addTab("SHAKE / CLEAR", createShakePanel());
 
         JPanel outputPanel = new JPanel(new BorderLayout());
         outputArea = new JTextArea(10, 40);
@@ -407,5 +406,7 @@ public class ClientGUI extends JFrame implements ServerConnection.ConnectionList
         SwingUtilities.invokeLater(() -> new ClientGUI());
     }
 }
+
+
 
 
